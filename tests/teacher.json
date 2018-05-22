@@ -1,0 +1,193 @@
+/* ---------------------------------------------------------
+NOTE: Get All Teachers
+------------------------------------------------------------
+Url: localhost:4000/api/v1/teacher?access_token=<token>
+Paramas: N/A
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+NOTE: Get a Teacher by (Teacher Id or User Id)
+------------------------------------------------------------
+Url: localhost:4000/api/v1/teacher/<teacher_id_or_user_id>?access_token=<token>
+Paramas: teacher_id_or_user_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Create New Teacher
+------------------------------------------------------------
+Url: localhost:4000/api/v1/teacher?access_token=<token>
+Paramas: N/A
+Token: required
+Method: POST
+{
+	"userId": "5adfd701b0b963040d3e38c2",
+	"schools": [
+		{
+		  "phone": {
+		    "office": "+855023334556",
+		    "telephone": "+855010233488",
+		    "mobile": "+855012223344"
+		  },
+		  "description": "the best school in cambodia that provice information teachnology skills",
+		  "active": true,
+		  "_id": "5ae15c6d487e7b06ace2c645",
+		  "schoolName": "Norton University",
+		  "type": "university",
+		  "email": "norton@gmail.com",
+		  "address": "#23, st 271, toulkok, phnom penh, cambodia",
+		  "color": "#45FF34",
+		  "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+		  "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+		  "createBy": "5adfd701b0b963040d3e38c2"
+		}
+  	],
+  	"departments": [
+		{"departmentId": "5ae15c6d487e7b06ace2c64f", "departmentName": "Computer Science"}
+  	]
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Update Teacher by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/teacher/<teacher_id>?access_token=<token>
+Paramas: teacher_id as String
+Token: required
+Method: PUT
+Example 1:
+{
+
+}
+
+--------------------------------------------------------- */
+
+
+
+=============
+* Return JSON
+=============
+[{
+  "schools": [{
+    "phone": {
+      "office": "+855023334556",
+      "support": "+855010233488",
+      "mobile": "+855012223344"
+    },
+    "description": "the best school in cambodia that provice information teachnology skills",
+    "active": true,
+    "_id": "5ae2775684f8b50392ef4271",
+    "schoolName": "Norton University0",
+    "type": "university",
+    "email": "norton@gmail.com0",
+    "address": "#23, st 271, toulkok, phnom penh, cambodia",
+    "color": "#45FF34",
+    "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+    "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+    "createBy": "5ae2775684f8b50392ef426f",
+    "createdAt": "2018-04-27T01:05:26.641Z",
+    "updatedAt": "2018-04-27T01:05:26.951Z",
+    "__v": 0
+  }],
+  "departments": [{
+    "description": null,
+    "active": true,
+    "_id": "5ae2775684f8b50392ef427b",
+    "name": "Computer Science"
+  }],
+  "subjects": [],
+  "classes": [{
+    "level": {
+      "_id": "5ae2775684f8b50392ef4279",
+      "name": "Year 1"
+    },
+    "active": true,
+    "grades": [{
+      "_id": "5ae2775684f8b50392ef4286",
+      "name": "A",
+      "maximum": 100,
+      "minimum": 91,
+      "status": "Excellent"
+    }, {
+      "_id": "5ae2775684f8b50392ef4285",
+      "name": "B",
+      "maximum": 90,
+      "minimum": 81,
+      "status": "Great"
+    }, {
+      "_id": "5ae2775684f8b50392ef4284",
+      "name": "C",
+      "maximum": 80,
+      "minimum": 71,
+      "status": "Good"
+    }, {
+      "_id": "5ae2775684f8b50392ef4283",
+      "name": "D",
+      "maximum": 70,
+      "minimum": 61,
+      "status": "Medium"
+    }, {
+      "_id": "5ae2775684f8b50392ef4282",
+      "name": "E",
+      "maximum": 60,
+      "minimum": 50,
+      "status": "Low"
+    }, {
+      "_id": "5ae2775684f8b50392ef4281",
+      "name": "F",
+      "maximum": 49,
+      "minimum": 0,
+      "status": "Failed"
+    }],
+    "_id": "5ae2775684f8b50392ef427e",
+    "name": "Year I Team I0",
+    "school": {
+      "phone": {
+        "office": "+855023334556",
+        "support": "+855010233488",
+        "mobile": "+855012223344"
+      },
+      "description": "the best school in cambodia that provice information teachnology skills",
+      "active": true,
+      "_id": "5ae2775684f8b50392ef4271",
+      "schoolName": "Norton University0",
+      "type": "university",
+      "email": "norton@gmail.com0",
+      "address": "#23, st 271, toulkok, phnom penh, cambodia",
+      "color": "#45FF34",
+      "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+      "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+      "createBy": "5ae2775684f8b50392ef426f",
+      "createdAt": "2018-04-27T01:05:26.641Z",
+      "updatedAt": "2018-04-27T01:05:26.641Z",
+      "__v": 0
+    },
+    "subject": {
+      "description": null,
+      "active": true,
+      "_id": "5ae2775684f8b50392ef427d",
+      "name": "C++ Programming 0",
+      "createBy": "5ae2775684f8b50392ef426f",
+      "departmentId": "5ae2775684f8b50392ef427b",
+      "createdAt": "2018-04-27T01:05:26.814Z",
+      "updatedAt": "2018-04-27T01:05:26.814Z",
+      "__v": 0
+    },
+    "status": "opening",
+    "code": 1111,
+    "teachBy": "5ae2775684f8b50392ef426f",
+    "createdAt": "2018-04-27T01:05:26.869Z",
+    "updatedAt": "2018-04-27T01:05:26.952Z",
+    "__v": 0
+  }],
+  "_id": "5ae2775684f8b50392ef4287",
+  "userId": "5ae2775684f8b50392ef426f",
+  "__v": 0
+}]

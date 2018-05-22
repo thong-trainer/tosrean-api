@@ -1,0 +1,62 @@
+/* ---------------------------------------------------------
+NOTE: Get All Students
+------------------------------------------------------------
+Url: localhost:4000/api/v1/student?access_token=<token>
+Paramas: N/A
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+NOTE: Get a Student by (Student Id or User Id)
+------------------------------------------------------------
+Url: localhost:4000/api/v1/student/<student_id_or_user_id>?access_token=<token>
+Paramas: student_id_or_user_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Create New Student
+------------------------------------------------------------
+Url: localhost:4000/api/v1/student?access_token=<token>
+Paramas: N/A
+Token: required
+Method: POST
+{
+
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Update Student by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/student/<student_id>?access_token=<token>
+Paramas: student_id as String
+Token: required
+Method: PUT
+Example 1:
+{
+
+}
+
+--------------------------------------------------------- */
+
+
+
+=============
+* Return JSON
+=============
+{
+  "description":"write something here",
+  "active":true,
+  "_id":"5adad3fd020f3c077eb58073",
+  "name":"C Programming",
+  "createBy":"5ad7ede3a2d5fb038435f422",
+  "timestamp":"2018-04-21T06:02:37.602Z",
+  "department":"5ad8826cf3193c0c9c9e3cf0"
+}

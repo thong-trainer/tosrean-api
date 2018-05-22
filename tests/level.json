@@ -1,0 +1,75 @@
+/* ---------------------------------------------------------
+NOTE: Get Grades by School Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/grade/<school_id>?access_token=<token>
+Paramas: school_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+NOTE: Get a Grade
+------------------------------------------------------------
+Url: localhost:4000/api/v1/grade/<subject_id>/<grade_id>?access_token=<token>
+Paramas: subject_id as String, grade_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Create New Grade
+------------------------------------------------------------
+Url: localhost:4000/api/v1/grade/<school_id>?access_token=<token>
+Paramas: school_id as String
+Token: required
+Method: POST
+{
+  "name": "Year 5",
+  "description": null (optional)
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Update Grade
+------------------------------------------------------------
+Url: localhost:4000/api/v1/grade/<school_id>/<grade_id>?access_token=<token>
+Paramas: school_id as String, grade_id as String
+Token: required
+Method: PUT
+Example 1:
+{
+  "name": "Year 6"
+}
+Example 2:
+{
+  "name": "Year 5",
+  "description": null, (optional)
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Remove Grade
+------------------------------------------------------------
+Url: localhost:4000/api/v1/grade/<school_id>/<grade_id>?access_token=<token>
+Paramas: school_id as String, grade_id as String
+Token: required
+Method: DELETE
+--------------------------------------------------------- */
+
+=============
+* Return JSON
+=============
+{
+  "description": null,
+  "active": true,
+  "_id": "5ae01732fbfc7b07b32fe19a",
+  "name": "Year 4",
+  "createdAt": "2018-04-25T05:50:42.505Z",
+  "updatedAt": "2018-04-25T06:01:22.601Z"
+}

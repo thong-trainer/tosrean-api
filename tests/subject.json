@@ -1,0 +1,79 @@
+/* ---------------------------------------------------------
+NOTE: Get Subjects by Department Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/subject/<department_id>?access_token=<token>
+Paramas: department_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+NOTE: Get a Subject by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/subject/id/<subject_id>?access_token=<token>
+Paramas: subject_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Create New Subject
+------------------------------------------------------------
+Url: localhost:4000/api/v1/subject/<school_id>/<department_id>?access_token=<token>
+Paramas: school_id as String, department_id as String
+Token: required
+Method: POST
+{
+  "name": "C Programming",
+  "createBy": "<user_id>",
+  "description": null (optional)
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Update Subject by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/subject/<subject_id>?access_token=<token>
+Paramas: subject_id as String
+Token: required
+Method: PUT
+Example 1:
+{
+  "name": "C Programming"
+}
+Example 2:
+{
+  "name": "C Programming",
+  "description": null, (optional)
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Remove Subject by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/subject/<subject_id>?access_token=<token>
+Paramas: subject_id as String
+Token: required
+Method: DELETE
+--------------------------------------------------------- */
+
+=============
+* Return JSON
+=============
+{
+  "description": null,
+  "active": true,
+  "_id": "5ae06a3ce59e73043c7db2b3",
+  "name": "English Communication",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "departmentId": "5adfee2f82943e060abd19ba",
+  "createdAt": "2018-04-25T11:45:00.050Z",
+  "updatedAt": "2018-04-25T11:50:14.147Z",
+  "__v": 0
+}

@@ -1,0 +1,180 @@
+/* ---------------------------------------------------------
+NOTE: Get a List of Users
+------------------------------------------------------------
+Url: localhost:4000/api/v1/user/p_index/p_limit?access_token=put_token_here
+Paramas: p_index as Number, p_limit as Number
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Get User by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/user/p_user_id?access_token=put_token_here
+Paramas: p_user_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Register a New User
+------------------------------------------------------------
+Url: localhost:4000/api/v1/user
+Paramas: N/A
+Token: optional
+Method: POST
+Example 1:
+{
+  "firstName": "Ley",
+  "lastName": "Kamthong",
+  "country": "+855",
+  "telephone": "+855-69665532",
+  "gender": "Male",
+  "level": "Teacher",
+  "password": "12345",
+  "tokens": [
+  	{ "ip": "192.129.122", "device": "iPhone7", "token": "5ad7ee09a2d5fb038435f426" }
+  ]
+}
+--------------------------------------------------------- */
+Result
+/* ---------------------------------------------------------
+{
+  "setting": {
+    "notification": true,
+    "language": "en-US"
+  },
+  "active": true,
+  "_id": "5adee37f86ea79099f4a213a",
+  "firstName": "Chan",
+  "lastName": "Rachana",
+  "email": "chanrachana@gmail.com",
+  "country": "+855",
+  "telephone": "+855-69665332",
+  "gender": "Female",
+  "level": "Student",
+  "password": "$2b$09$cCojk90avl8NKRw67jzaTeLjaIJYiB/A6ucyIy3OoO0IJPCQE51r.",
+  "tokens": [{
+    "_id": "5adee37f86ea79099f4a213b",
+    "ip": "192.129.122",
+    "device": "iPhone7",
+    "token": "5ad7ee09a2d5fb038435f126",
+    "timestamp": "2018-04-24T07:57:51.796Z"
+  }],
+  "timestamp": "2018-04-24T07:57:51.797Z",
+  "__v": 0
+}
+--------------------------------------------------------- */
+
+
+/* ---------------------------------------------------------
+NOTE: Update a User by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/user/p_user_id?access_token=put_token_here
+Paramas: user_id as String
+Token: required
+Method: PUT
+Example 1:
+{
+  "firstName": "Chan",
+  "lastName": "Rachana",
+  "email": "kamthong@gmail.com"
+}
+Example 2:
+{
+  "setting": {
+  	"language": "km-KH",
+	"notification": false
+  }
+}
+Example 3:
+{
+  "permission": {
+  	"level": "superadmin",
+  	"isView": true,
+  	"isInsert": true,
+  	"isUpdate": true,
+  	"isDelete": true
+  }
+}
+Example 4:
+{
+  "coverImage": "http://tosrean.com/public/images/profiles/<year>/<month>/<user_id>"
+}
+--------------------------------------------------------- */
+
+
+/* ---------------------------------------------------------
+NOTE: User Login
+------------------------------------------------------------
+Url: localhost:4000/api/v1/auth/login?access_token=put_token_here
+Paramas: N/A
+Token: required
+Method: POST
+Example 1:
+{
+  "telephone": "+855-69665532",
+  "password": "12345",
+  "tokens": [
+  	{ "ip": "192.129.122", "device": "iPhone7", "token": "5ad7ee09a2d5fb038435f426" }
+  ]
+}
+--------------------------------------------------------- */
+
+=============
+* Return JSON
+=============
+
+{
+  "setting": {
+    "notification": true,
+    "language": "en-US"
+  },
+  "permission": {
+    "level": "superadmin",
+    "isView": true,
+    "isInsert": true,
+    "isUpdate": true,
+    "isDelete": true
+  },
+  "active": true,
+  "tokens": [{
+    "timestamp": "2018-04-25T01:03:26.397Z",
+    "_id": "5adfd3de64946803e533b7a0",
+    "ip": "192.129.122",
+    "device": "iPhone7",
+    "token": "5ad7ee09a2d5fb038435f555"
+  }],
+  "_id": "5adfd3de64946803e533b79f",
+  "firstName": "Chan",
+  "lastName": "Rachana",
+  "country": "+855",
+  "telephone": "+855-69666555",
+  "gender": "Female",
+  "level": "Student",
+  "password": "$2b$09$FJwdQF6NsvYyoVC9cgS2pu7rC4eRZ8/8cEf4x5ZqBZOoONVw4mMVW",
+  "createdAt": "2018-04-25T01:03:26.442Z",
+  "updatedAt": "2018-04-25T01:04:53.249Z",
+  "__v": 0
+}
+
+
+
+
+// // Demo Data
+// for (var i = 0; i < 100; i++) {
+//   const token = req.body.tokens[0];
+//   token.token += i;
+//   const newUser = User(req.body);
+//   newUser.lastName = req.body.lastName + i;
+//   newUser.email = req.body.email + i;
+//   newUser.telephone = req.body.telephone + i;
+//   newUser.tokens[0] = token;
+//   newUser.password = newUser.generateHash(newUser.password);
+//   const user = await newUser.save();
+// }
+// res.send('successful');

@@ -1,0 +1,260 @@
+/* ---------------------------------------------------------
+NOTE: Get All Schools
+------------------------------------------------------------
+Url: localhost:4000/api/v1/school?access_token=<token>
+Paramas: N/A
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Get a School by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/school/<school_id>?access_token=<token>
+Paramas: school_id as String
+Token: required
+Method: GET
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Create New School
+------------------------------------------------------------
+Url: localhost:4000/api/v1/school?access_token=<token>
+Paramas: N/A
+Token: required
+Method: POST
+Example 1:
+{
+  "schoolName": "Norton University",
+  "type": "University",
+  "email": "norton@gmail.com",
+  "address": "#23, st 271, toulkok, phnom penh, cambodia",
+  "description": "the best school in cambodia that provice information teachnology skills",
+  "color": "#45FF34",
+  "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+  "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "phone": {
+    "office": "+855023334556",
+    "telephone": "+855010233488",
+    "mobile": "+855012223344"
+  },
+  "socialIds": [
+    {"name": "Facebook", "url": "http://facebook.com/norton-u"},
+    {"name": "Twitter", "url": "http://twitter.com/norton-u"},
+    {"name": "Website", "url": "http://www.norton-u.com/"}
+  ],
+  "levels": [
+    {"name": "Year 1"},
+    {"name": "Year 2"},
+    {"name": "Year 3"},
+    {"name": "Year 4"}
+  ],
+  "departments": [
+    {"name": "Computer Science"},
+    {"name": "International Bussiness"}
+  ]
+}
+--------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------
+NOTE: Update a School by Id
+------------------------------------------------------------
+Url: localhost:4000/api/v1/school/<school_id>?access_token=<token>
+Paramas: school_id as String
+Token: required
+Method: PUT
+Descirption: all fields are required
+{
+  "schoolName": "Norton University",
+  "type": "University",
+  "email": "norton.support@gmail.com",
+  "address": "#23, st 271, toulkok, phnom penh, cambodia",
+  "description": "the best school in cambodia that provice information teachnology skills",
+  "color": "#45FF34",
+  "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+  "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+  "phone": {
+    "office": "+855-23334556",
+    "telephone": "+855-10233488",
+    "mobile": "+855-12223344"
+  }
+}
+--------------------------------------------------------- */
+
+
+
+{
+  "socialIds": [
+    {"name": "Facebook", "url": "http://facebook.com/norton"},
+    {"name": "Twitter", "url": "http://twitter.com/norton"},
+    {"name": "Website", "url": "http://www.norton-u.com"}
+  ]
+}
+
+
+{
+  "schoolId": "5ae15c6d487e7b06ace2c645",
+  "package": "enterprise",
+  "duration": "1",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "cost": 90
+}
+
+
+=============
+* Return JSON
+=============
+
+
+{
+  "duration": 1,
+  "cost": 90,
+  "_id": "5ae162674557f907048a6687",
+  "schoolId": "5ae15c6d487e7b06ace2c645",
+  "package": "enterprise",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "expireAt": "2018-05-26T05:23:51.806Z",
+  "createdAt": "2018-04-26T05:23:51.806Z",
+  "updatedAt": "2018-04-26T05:23:51.806Z",
+  "__v": 0
+}
+
+
+{
+  "phone": {
+    "office": "+855-23334556",
+    "telephone": "+855-10233488",
+    "mobile": "+855-12223344"
+  },
+  "description": "the best school in cambodia that provice information teachnology skills",
+  "active": true,
+  "_id": "5adfee2f82943e060abd19b0",
+  "schoolName": "Norton University",
+  "type": "University",
+  "email": "norton.support@gmail.com",
+  "address": "#23, st 271, toulkok, phnom penh, cambodia",
+  "color": "#45FF34",
+  "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+  "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "createdAt": "2018-04-25T02:55:43.071Z",
+  "updatedAt": "2018-04-25T02:56:39.110Z",
+  "__v": 0
+}
+
+
+
+
+
+
+
+
+
+
+{
+  "socialIds": [{
+    "_id": "5ae00587ecf96306f286acd0",
+    "name": "Facebook",
+    "url": "http://facebook.com/norton1"
+  }, {
+    "_id": "5ae00587ecf96306f286accf",
+    "name": "Twitter",
+    "url": "http://twitter.com/norton1"
+  }, {
+    "_id": "5ae00587ecf96306f286acce",
+    "name": "Website",
+    "url": "http://www.norton-u.com"
+  }],
+  "levels": [{
+      "description": null,
+      "active": true,
+      "timestamp": "2018-04-25T02:55:43.164Z",
+      "_id": "5adfee2f82943e060abd19b8",
+      "name": "Year 1",
+      "createdAt": "2018-04-25T02:55:43.166Z",
+      "updatedAt": "2018-04-25T02:55:43.166Z"
+    },
+    {
+      "description": null,
+      "active": true,
+      "timestamp": "2018-04-25T02:55:43.164Z",
+      "_id": "5adfee2f82943e060abd19b7",
+      "name": "Year2",
+      "createdAt": "2018-04-25T02:55:43.167Z",
+      "updatedAt": "2018-04-25T02:55:43.167Z"
+    }, {
+      "description": null,
+      "active": true,
+      "timestamp": "2018-04-25T02:55:43.164Z",
+      "_id": "5adfee2f82943e060abd19b6",
+      "name": "Year 3",
+      "createdAt": "2018-04-25T02:55:43.167Z",
+      "updatedAt": "2018-04-25T02:55:43.167Z"
+    },
+    {
+      "description": null,
+      "active": true,
+      "timestamp": "2018-04-25T02:55:43.164Z",
+      "_id": "5adfee2f82943e060abd19b5",
+      "name": "Year 4",
+      "createdAt": "2018-04-25T02:55:43.167Z",
+      "updatedAt": "2018-04-25T02:55:43.167Z"
+    }
+  ],
+  "departments": [{
+    "description": null,
+    "active": true,
+    "_id": "5adfee2f82943e060abd19ba",
+    "name": "Computer Science",
+    "createdAt": "2018-04-25T02:55:43.167Z",
+    "updatedAt": "2018-04-25T02:55:43.167Z"
+  }, {
+    "description": null,
+    "active": true,
+    "_id": "5adfee2f82943e060abd19b9",
+    "name": "International Bussiness",
+    "createdAt": "2018-04-25T02:55:43.167Z",
+    "updatedAt": "2018-04-25T02:55:43.167Z"
+  }],
+  "_id": "5adfee2f82943e060abd19b1",
+  "schoolId": "5adfee2f82943e060abd19b0",
+  "createdAt": "2018-04-25T02:55:43.167Z",
+  "updatedAt": "2018-04-25T04:35:19.998Z",
+  "__v": 2
+}
+
+
+
+
+
+
+
+
+[{
+  "phone": {
+    "office": "+855023334556",
+    "telephone": "+855010233488",
+    "mobile": "+855012223344"
+  },
+  "description": "the best school in cambodia that provice information teachnology skills",
+  "active": true,
+  "_id": "5ae15c6d487e7b06ace2c645",
+  "schoolName": "Norton University",
+  "type": "university",
+  "email": "norton@gmail.com",
+  "address": "#23, st 271, toulkok, phnom penh, cambodia",
+  "color": "#45FF34",
+  "logoImage": "http://www.norton-u.com/images/logo/logo_only.png",
+  "coverImage": "http://fedoraproject.org/w/uploads/3/36/Norton.jpg",
+  "createBy": "5adfd701b0b963040d3e38c2",
+  "createdAt": "2018-04-26T04:58:21.538Z",
+  "updatedAt": "2018-04-26T04:58:21.538Z",
+  "__v": 0
+}]
