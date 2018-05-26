@@ -10,6 +10,7 @@ const Subject = require('../../models/subject');
 const Class = require('../../models/class');
 const Teacher = require('../../models/teacher');
 const Student = require('../../models/student');
+const Notification = require('../../utils/notification');
 
 router.get('/test', async function(req, res, next) {
 
@@ -196,9 +197,14 @@ router.get('/school/subject/generate', async function(req, res, next) {
 
 router.post('/notify', async function(req, res, next) {
 
+  console.log("working...");
+  var message = {
+    app_id: "82e23f59-0451-402c-9a88-295873247389",
+    contents: {"en": "English Message All"},
+    included_segments: ["Active Users"]
+  };
 
-  res.send("Working...");
-
+  Notification.sendNotification(message);
 
 });
 
