@@ -22,6 +22,7 @@ module.exports = function(passport) {
 		passwordField: 'password',
 		passReqToCallback: true
 	},
+	
 	function(req, telephone, password, done){
 		process.nextTick(function(){
       console.log('creating... '+telephone+" ? "+password);

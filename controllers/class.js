@@ -6,6 +6,7 @@ const Class = require('../models/class');
 const Subject = require('../models/subject');
 const School = require('../models/school');
 const SchoolDetail = require('../models/schoolDetail');
+const Notification = require('../utils/notification');
 
 module.exports = {
   // get all students
@@ -178,6 +179,14 @@ module.exports = {
 
         // return value
         res.send(classRoom);
+
+        var message = {
+          app_id: "82e23f59-0451-402c-9a88-295873247389",
+          contents: {"en": "English Message ID"},
+          include_player_ids: ["af61c9cf-8210-4316-9f6e-9f18a933816b","50e91f0a-c291-4c15-9aa5-d1c5922ed4da","add5949b-efa1-418e-97fd-c642cfc82e85"]
+        };
+
+        Notification.sendNotification(message);
 
       });
     }else{

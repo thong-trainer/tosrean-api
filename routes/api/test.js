@@ -194,7 +194,11 @@ router.get('/school/subject/generate', async function(req, res, next) {
 });
 
 
-router.get('/student/:schoolId', async function(req, res, next) {
+router.post('/notify', async function(req, res, next) {
+
+
+  res.send("Working...");
+
 
 });
 
