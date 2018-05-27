@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 // import models
+const User = require('../models/user');
 const Student = require('../models/student');
 const Teacher = require('../models/teacher');
 const Class = require('../models/class');
@@ -138,8 +139,10 @@ module.exports = {
   addStudent: async (req, res, next) => {
 
     // add a new student
+
     const item = await Class.findById(req.params.id);
     const i = item.students.length;
+
     item.students[i] = req.body;
 
     // update class information
@@ -148,12 +151,18 @@ module.exports = {
 
       // retreive a document by id
       Class.findById(req.params.id).then(async function(classRoom){
+        // var tokens = [];
+        // console.log("Teacher Token: "+req.query.access_token);
+        // tokens.push(req.query.access_token);
+
+
         // update teacher information
         const teacher = await Teacher.findOne({userId: classRoom.teachBy});
         const index = teacher.classes.findIndex(x => x.id == classRoom._id);
         if(index != -1){
           // update a class into the teacher profile
           teacher.classes[index] = classRoom;
+
           await Teacher.findByIdAndUpdate({_id: teacher._id}, teacher);
         }
         // end update teacher profile
@@ -162,6 +171,16 @@ module.exports = {
         classRoom.students.forEach(async function(item){
 
           var student = await Student.findOne({userId: item.user._id});
+
+
+          // // group of send notification
+          // var user = await User.findById(item.user._id);
+          // var token = user.tokens[user.tokens.length - 1].token;
+          // console.log(">> Student Token: "+token+"   (telephone) "+user.telephone);
+          // Notification.send("New Student", token);
+          // // end group of send notification
+
+
           var index = student.classes.findIndex(x => x.id == classRoom._id);
 
           if(index == -1){
@@ -177,16 +196,19 @@ module.exports = {
 
         });
 
+        console.log("***** Finished *****");
         // return value
         res.send(classRoom);
 
-        var message = {
-          app_id: "82e23f59-0451-402c-9a88-295873247389",
-          contents: {"en": "English Message ID"},
-          include_player_ids: ["af61c9cf-8210-4316-9f6e-9f18a933816b","50e91f0a-c291-4c15-9aa5-d1c5922ed4da","add5949b-efa1-418e-97fd-c642cfc82e85"]
-        };
+        Notification.sendToClass(req.body.user, classRoom);
 
-        Notification.sendNotification(message);
+        // var message = {
+        //   app_id: "82e23f59-0451-402c-9a88-295873247389",
+        //   contents: {"en": "English Message ID"},
+        //   include_player_ids: ["af61c9cf-8210-4316-9f6e-9f18a933816b","50e91f0a-c291-4c15-9aa5-d1c5922ed4da","add5949b-efa1-418e-97fd-c642cfc82e85"]
+        // };
+        //
+        // Notification.sendNotification(message);
 
       });
     }else{

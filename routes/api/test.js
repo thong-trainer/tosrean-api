@@ -198,13 +198,8 @@ router.get('/school/subject/generate', async function(req, res, next) {
 router.post('/notify', async function(req, res, next) {
 
   console.log("working...");
-  var message = {
-    app_id: "82e23f59-0451-402c-9a88-295873247389",
-    contents: {"en": "English Message All"},
-    included_segments: ["Active Users"]
-  };
 
-  Notification.sendNotification(message);
+  Notification.sendAll("Hello World All");
 
 });
 
