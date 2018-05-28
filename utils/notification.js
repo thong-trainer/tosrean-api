@@ -81,6 +81,8 @@ module.exports = {
     // get a token from the teacher
     var teacher = await User.findById(classRoom.teachBy);
     if(teacher){
+      console.log("********** teacher ***********");
+      console.log(teacher.tokens);
       var token = teacher.tokens[teacher.tokens.length - 1].token;
       console.log(">> Teacher Token: "+token+"   (telephone) "+teacher.telephone);
       tokens.push(token);

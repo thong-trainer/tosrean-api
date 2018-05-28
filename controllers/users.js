@@ -122,16 +122,25 @@ module.exports = {
 
       }else{
         // find a token
-        var found = user.tokens.find(x => x.token == token);
-        if(found){
+        // var found = user.tokens.find(x => x.token == token);
+        const index = user.tokens.findIndex(x => x.token == token);
+        if(index != -1){
+          console.log(user);
+          console.log("***** Remove Token ******");
+          user.tokens.splice(index, 1);
+          console.log(user);
           // return user information
-          res.send(user);
-        }else{
+          // res.send(user);
+        }
+        // else{
+          console.log("***** ADD TOKEN *****");
+          console.log("LENGTH: "+user.tokens.length);
           // add a new token, then return user information
           user.tokens[user.tokens.length] = req.body.tokens[0];
           const u = await User.findByIdAndUpdate(user._id, user);
           res.send(u);
-        }
+          console.log(u);
+       // }
       }
     }else{
       res.status(500).json({
