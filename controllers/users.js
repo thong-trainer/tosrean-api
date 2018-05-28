@@ -121,19 +121,25 @@ module.exports = {
         });
 
       }else{
-        // find index of token
-        const index = user.tokens.findIndex(x => x.token == token);
-        if(index != -1){
-          console.log("***** REMOVE TOKEN *****");
-          user.tokens.splice(index, 1);
-        }
 
-        console.log("***** ADD TOKEN *****");
-        // add a new token, then return user information
-        user.tokens[user.tokens.length] = req.body.tokens[0];
+        user.tokens = req.body.tokens;
         const u = await User.findByIdAndUpdate(user._id, user);
         res.send(u);
+        console.log("***** USER INFO *****");
         console.log(u);
+
+        // // find index of token
+        // const index = user.tokens.findIndex(x => x.token == token);
+        // if(index != -1){
+        //   console.log("***** REMOVE TOKEN *****");
+        //   user.tokens.splice(index, 1);
+        // }
+        //
+        // console.log("***** ADD TOKEN *****");
+        // // add a new token, then return user information
+        // user.tokens[user.tokens.length] = req.body.tokens[0];
+        // const u = await User.findByIdAndUpdate(user._id, user);
+        // res.send(u);
 
       }
     }else{
