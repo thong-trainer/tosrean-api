@@ -40,7 +40,7 @@ module.exports = {
       app_id: APP_ID,
       contents: {"en": content},
       headings: {"en": "Title App"},
-      data: {"profile": "123899", "imageUrl": "profile_female_placeholder.png"},
+      data: {"test": "123899", "imageUrl": "profile_female_placeholder.png"},
       included_segments: ["Active Users"],
 
     };
@@ -81,8 +81,8 @@ module.exports = {
     // get a token from the teacher
     var teacher = await User.findById(classRoom.teachBy);
     if(teacher){
-      console.log("********** teacher ***********");
-      console.log(teacher.tokens);
+      //console.log("********** teacher ***********");
+      //console.log(teacher.tokens);
       var token = teacher.tokens[teacher.tokens.length - 1].token;
       console.log(">> Teacher Token: "+token+"   (telephone) "+teacher.telephone);
       tokens.push(token);
@@ -101,13 +101,13 @@ module.exports = {
 
 
     // message information
-    var content = "Now, "+ user.firstName +" "+ user.lastName+" joined in "+
+    var content = user.firstName +" "+ user.lastName+" joined in "+
     classRoom.level.name+" "+classRoom.name+" at "+classRoom.school.schoolName;
     var message = {
       app_id: APP_ID,
       headings: {"en": "New Student"},
       contents: {"en": content},
-      data: {"profile": user._id, "imageUrl": user.profileImage},
+      data: {"profile": user._id, "imageUrl": user.profileImage, "timestamp": classRoom.updatedAt},
       include_player_ids: tokens
     };
 
