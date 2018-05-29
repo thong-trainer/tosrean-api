@@ -19,6 +19,7 @@ var sendNotification = function(data) {
       console.log(JSON.parse(data));
     });
   });
+  
   req.on('error', function(e) {
     console.log("ERROR:");
     console.log(e);
