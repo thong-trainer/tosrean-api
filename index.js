@@ -63,6 +63,7 @@ app.use('/api/v1/subject', require('./routes/api/subject'));
 app.use('/api/v1/teacher', require('./routes/api/teacher'));
 app.use('/api/v1/student', require('./routes/api/student'));
 app.use('/api/v1/class', require('./routes/api/class'));
+app.use('/api/v1/group', require('./routes/api/group'));
 
 
 app.get('/', (req, res) => res.render('index'));
