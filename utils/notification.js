@@ -48,7 +48,7 @@ module.exports = {
     req.write(JSON.stringify(message));
     req.end();
   },
-  sendToClass: async (user, classRoom) => {
+  sendToClass: async (user, classRoom, status) => {
     var headers = {
       "Content-Type": "application/json; charset=utf-8",
       "Authorization": "Basic ZDBiZDJmYWUtMDU5ZC00MGQxLWFlNGQtNjI5ODEzZjczZmVi"
@@ -101,11 +101,22 @@ module.exports = {
 
 
     // message information
-    var content = user.firstName +" "+ user.lastName+" joined in "+
-    classRoom.level.name+" "+classRoom.name+" at "+classRoom.school.schoolName;
+
+    var content = "";
+    if (status == "ADD"){
+      content = user.firstName +" "+ user.lastName+" joined in "+ classRoom.level.name
+                  +" "+classRoom.name+" at "+classRoom.school.schoolName;
+    } else if (status == "REMOVE") {
+      content = user.firstName +" "+ user.lastName+" removed from the "+ classRoom.level.name
+                  +" "+classRoom.name+" at "+classRoom.school.schoolName;
+    } else if (status == "LEAVE") {
+      content = user.firstName +" "+ user.lastName+" left the "+ classRoom.level.name
+                  +" "+classRoom.name+" at "+classRoom.school.schoolName;
+    }
+
     var message = {
       app_id: APP_ID,
-      headings: {"en": "New Student"},
+      headings: {"en": "Classroom"},
       contents: {"en": content},
       data: {"profile": user._id, "imageUrl": user.profileImage, "timestamp": classRoom.updatedAt},
       include_player_ids: tokens

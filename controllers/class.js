@@ -135,15 +135,71 @@ module.exports = {
       });
     }
   },
-  // edit a class by id
-  addStudent: async (req, res, next) => {
+  // add a student to the class by id
+  addOrRemoveStudent: async (req, res, next) => {
 
-    // add a new student
+    var status = req.query.status;
+    if (typeof status == 'undefined') {
+        res.status(500).json({
+          message: "incorrect information (status query is empty)",
+          success: false
+        });
+        return ;
+    }
 
     const item = await Class.findById(req.params.id);
-    const i = item.students.length;
+    var i = -1;
+    status = status.toUpperCase()
 
-    item.students[i] = req.body;
+    if(status == "ADD"){
+      // adding
+      i = item.students.length;
+      item.students[i] = req.body;
+    } else if (status == "REMOVE" || status == "LEAVE"){
+      // removing
+      i = item.students.findIndex(x => x.user._id == req.body.user._id);
+      item.students.splice(i, 1);
+    } else{
+      // return some mistakes
+      res.status(500).json({
+        message: "incorrect information (status query is not match the rule)",
+        success: false
+      });
+      return;
+    }
+
+    // switch (status.toUpperCase()) {
+    //     case "ADD":
+    //       isNewStudent = true;
+    //       i = item.students.length;
+    //       item.students[i] = req.body;
+    //       console.log("***** ADDING *****");
+    //       break;
+    //
+    //     case "REMOVE":
+    //       i = item.students.findIndex(x => x.user._id == req.body.user._id);
+    //       item.students.splice(i, 1);
+    //       console.log("***** REMOVING ***** INDEX: "+i +"   ID: "+req.body.user._id);
+    //       break;
+    //
+    //     case "REMOVE":
+    //       i = item.students.findIndex(x => x.user._id == req.body.user._id);
+    //       item.students.splice(i, 1);
+    //         console.log("***** REMOVING ***** INDEX: "+i +"   ID: "+req.body.user._id);
+    //         break;
+    //
+    //     default:
+    //       console.log("***** NOTHING *****");
+    //       res.status(500).json({
+    //         message: "incorrect information (status query is not match the rule)",
+    //         success: false
+    //       });
+    //       return;
+    // }
+
+    console.log("***** DO SOMETHING MORE *****");
+    // res.send(item.students);
+    // return;
 
     // update class information
     const editClass = await Class.findByIdAndUpdate({_id: req.params.id}, item);
@@ -151,10 +207,6 @@ module.exports = {
 
       // retreive a document by id
       Class.findById(req.params.id).then(async function(classRoom){
-        // var tokens = [];
-        // console.log("Teacher Token: "+req.query.access_token);
-        // tokens.push(req.query.access_token);
-
 
         // update teacher information
         const teacher = await Teacher.findOne({userId: classRoom.teachBy});
@@ -162,7 +214,6 @@ module.exports = {
         if(index != -1){
           // update a class into the teacher profile
           teacher.classes[index] = classRoom;
-
           await Teacher.findByIdAndUpdate({_id: teacher._id}, teacher);
         }
         // end update teacher profile
@@ -171,53 +222,32 @@ module.exports = {
         classRoom.students.forEach(async function(item){
 
           var student = await Student.findOne({userId: item.user._id});
-
-
-          // // group of send notification
-          // var user = await User.findById(item.user._id);
-          // var token = user.tokens[user.tokens.length - 1].token;
-          // console.log(">> Student Token: "+token+"   (telephone) "+user.telephone);
-          // Notification.send("New Student", token);
-          // // end group of send notification
-
-
           var index = student.classes.findIndex(x => x.id == classRoom._id);
-
           if(index == -1){
             // add a new class into the student profile
             const count = student.classes.length;
             student.classes[count] = classRoom;
-          }
-          else {
+          } else {
             // update a class into the student profile
             student.classes[index] = classRoom;
           }
           await Student.findByIdAndUpdate({_id: student._id}, student);
-
         });
 
         console.log("***** Finished *****");
-        // return value
         res.send(classRoom);
 
-        Notification.sendToClass(req.body.user, classRoom);
-
-        // var message = {
-        //   app_id: "82e23f59-0451-402c-9a88-295873247389",
-        //   contents: {"en": "English Message ID"},
-        //   include_player_ids: ["af61c9cf-8210-4316-9f6e-9f18a933816b","50e91f0a-c291-4c15-9aa5-d1c5922ed4da","add5949b-efa1-418e-97fd-c642cfc82e85"]
-        // };
-        //
-        // Notification.sendNotification(message);
+        Notification.sendToClass(req.body.user, classRoom, status);
 
       });
-    }else{
+    } else{
       // the class not found
       res.status(500).json({
         message: "incorrect information",
         success: false
       });
     }
+
   },
   // desactive a class by (class id and class code)
   remove: async (req, res, next) => {
