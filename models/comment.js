@@ -8,14 +8,14 @@ const CommentSchema = new Schema({
     ref: 'class',
     required: [true, 'classId field is required']
   },
-  author: [{
+  author: {
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: [true, 'id field is required']
     },
     name: String
-  }],
+  },
   text: {
     type: String,
     required: [true, 'text field is required']
