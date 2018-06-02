@@ -54,7 +54,7 @@ Paramas: class_id as String
 Token: required
 Method: POST
 */
-router.route('/add-remove-student/:id').put(ClassController.addOrRemoveStudent);
+router.route('/student/:id').put(ClassController.addOrRemoveStudent);
 
 /*
 NOTE: Remove Class by Id
