@@ -16,7 +16,7 @@ Paramas: class_id as String
 Token: required
 Method: GET
 */
-router.route('/:topicId').get(CommentController.index);
+router.route('/:topicId/:status/:index/:limit').get(CommentController.index);
 
 /*
 NOTE: Get a Group by Id
@@ -25,7 +25,7 @@ Paramas: group_id as String
 Token: required
 Method: GET
 */
-router.route('/id/:id').get(CommentController.getById);
+router.route('/:id').get(CommentController.getById);
 
 /*
 NOTE: Create New Group

@@ -5,7 +5,24 @@ const Comment = require('../models/comment');
 module.exports = {
   // get comments by department id
   index: async (req, res, next) => {
-     const comments = await Comment.find({topicId: req.params.topicId, active: true});
+    // params validation
+    if (isNaN(req.params.index) || isNaN(req.params.limit)) {
+      res.status(500).json({
+        message: "incorrect information.",
+        success: false
+      });
+      return;
+    }
+
+    const limit = parseInt(req.params.limit, 0);
+    const skip = req.params.index * limit;
+
+    const comments = await Comment.find({
+      topicId: req.params.topicId,
+      status: req.params.status,
+      active: true
+    }).skip(skip).limit(limit);
+
     res.send(comments);
   },
   // create a new comment
