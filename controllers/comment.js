@@ -21,7 +21,7 @@ module.exports = {
       topicId: req.params.topicId,
       status: req.params.status,
       active: true
-    }).skip(skip).limit(limit);
+    }).sort({createdAt: -1}).skip(skip).limit(limit);
 
     res.send(comments);
   },
