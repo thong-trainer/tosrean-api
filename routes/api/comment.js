@@ -4,7 +4,7 @@ const passport = require('passport');
 // install: npm install express-promise-router
 const router = require('express-promise-router')();
 // import controllers
-const GroupController = require('../../controllers/group');
+const CommentController = require('../../controllers/comment');
 
 // access token authentication
 router.use(passport.authenticate('bearer', { session: false}));
@@ -16,7 +16,7 @@ Paramas: class_id as String
 Token: required
 Method: GET
 */
-router.route('/:classId').get(GroupController.index);
+router.route('/:topicId').get(CommentController.index);
 
 /*
 NOTE: Get a Group by Id
@@ -25,7 +25,7 @@ Paramas: group_id as String
 Token: required
 Method: GET
 */
-router.route('/id/:id').get(GroupController.getById);
+router.route('/id/:id').get(CommentController.getById);
 
 /*
 NOTE: Create New Group
@@ -34,7 +34,7 @@ Paramas: N/A
 Token: required
 Method: POST
 */
-router.route('/').post(GroupController.insert);
+router.route('/').post(CommentController.insert);
 
 /*
 NOTE: Update Group by Id
@@ -43,7 +43,7 @@ Paramas: group_id as String
 Token: required
 Method: PUT
 */
-router.route('/:id').put(GroupController.update);
+router.route('/:id').put(CommentController.update);
 
 /*
 NOTE: Remove Group by Id
@@ -52,7 +52,7 @@ Paramas: group_id as String
 Token: required
 Method: DELETE
 */
-router.route('/:id').delete(GroupController.remove);
+router.route('/:id').delete(CommentController.remove);
 
 
 module.exports = router;
