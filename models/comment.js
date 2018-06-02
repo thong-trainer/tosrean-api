@@ -14,7 +14,10 @@ const CommentSchema = new Schema({
       ref: 'user',
       required: [true, 'id field is required']
     },
-    name: String
+    username: {
+      type: String,
+      required: [true, 'username field is required']      
+    }
   },
   text: {
     type: String,
