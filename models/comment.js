@@ -16,8 +16,9 @@ const CommentSchema = new Schema({
     },
     username: {
       type: String,
-      required: [true, 'username field is required']      
-    }
+      required: [true, 'username field is required']
+    },
+    profileImage: String
   },
   text: {
     type: String,
