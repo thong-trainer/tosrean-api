@@ -19,7 +19,7 @@ var sendNotification = function(data) {
       console.log(JSON.parse(data));
     });
   });
-  
+
   req.on('error', function(e) {
     console.log("ERROR:");
     console.log(e);
@@ -31,7 +31,6 @@ var sendNotification = function(data) {
 
 var message = {
   app_id: "82e23f59-0451-402c-9a88-295873247389",
-  headings: {"en": "From Machine"},
   contents: {"en": "English Message All"},
   included_segments: ["Active Users"]
 };

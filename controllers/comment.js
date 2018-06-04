@@ -25,6 +25,11 @@ module.exports = {
 
     res.send(comments);
   },
+  // get a comment by id
+  getById: async (req, res, next) => {
+    const comment = await Comment.findOne({_id: req.params.id, active: true});
+    res.send(comment);
+  },
   // create a new comment
   insert: async (req, res, next) => {
     console.log(">> INSERTING...");
@@ -32,11 +37,6 @@ module.exports = {
     newComment._id = mongoose.Types.ObjectId();
     const result = await newComment.save();
     res.send(result);
-  },
-  // get a group by id
-  getById: async (req, res, next) => {
-    const comment = await Comment.findOne({_id: req.params.id, active: true});
-    res.send(comment);
   },
   // edit a comment by id
   update: async (req, res, next) => {

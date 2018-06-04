@@ -10,26 +10,26 @@ const CommentController = require('../../controllers/comment');
 router.use(passport.authenticate('bearer', { session: false}));
 
 /*
-NOTE: Get Groups by Class Id
-Url: localhost:4000/api/v1/group/<class_id>?access_token=<token>
-Paramas: class_id as String
+NOTE: Get Comments by Topic Id
+Url: localhost:4000/api/v1/comment/<topic_id>/<status>/index/limit?access_token=<token>
+Paramas: topic_id as String, status as String, index as Number, limit as Number
 Token: required
 Method: GET
 */
 router.route('/:topicId/:status/:index/:limit').get(CommentController.index);
 
 /*
-NOTE: Get a Group by Id
-Url: localhost:4000/api/v1/group/id/<group_id>?access_token=<token>
-Paramas: group_id as String
+NOTE: Get a Comment by Id
+Url: localhost:4000/api/v1/comment/<comment_id>?access_token=<token>
+Paramas: comment_id as String
 Token: required
 Method: GET
 */
 router.route('/:id').get(CommentController.getById);
 
 /*
-NOTE: Create New Group
-Url: localhost:4000/api/v1/group?access_token=<token>
+NOTE: Create New Comment
+Url: localhost:4000/api/v1/comment?access_token=<token>
 Paramas: N/A
 Token: required
 Method: POST
@@ -37,18 +37,18 @@ Method: POST
 router.route('/').post(CommentController.insert);
 
 /*
-NOTE: Update Group by Id
-Url: localhost:4000/api/v1/group/<group_id>?access_token=<token>
-Paramas: group_id as String
+NOTE: Update Comment by Id
+Url: localhost:4000/api/v1/comment/<comment_id>?access_token=<token>
+Paramas: comment_id as String
 Token: required
 Method: PUT
 */
 router.route('/:id').put(CommentController.update);
 
 /*
-NOTE: Remove Group by Id
-Url: localhost:4000/api/v1/group/<group_id>?access_token=<token>
-Paramas: group_id as String
+NOTE: Remove Comment by Id
+Url: localhost:4000/api/v1/comment/<comment_id>?access_token=<token>
+Paramas: comment_id as String
 Token: required
 Method: DELETE
 */

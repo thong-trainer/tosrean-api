@@ -6,13 +6,13 @@ const CommentSchema = new Schema({
   topicId: {
     type: Schema.Types.ObjectId,
     ref: 'class',
-    required: [true, 'classId field is required']
+    required: [true, 'topicId field is required']
   },
   author: {
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'user',
-      required: [true, 'id field is required']
+      required: [true, 'userId field is required']
     },
     username: {
       type: String,
@@ -26,7 +26,7 @@ const CommentSchema = new Schema({
   },
   status: {
     type: String,
-    required: [true, 'status field is required']
+    required: [true, 'status field is required (use to identify who is topicId)']
   },
   active: {
     type: Boolean,

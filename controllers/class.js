@@ -4,6 +4,7 @@ const User = require('../models/user');
 const Student = require('../models/student');
 const Teacher = require('../models/teacher');
 const Class = require('../models/class');
+const Rating = require('../models/rating');
 const Subject = require('../models/subject');
 const School = require('../models/school');
 const SchoolDetail = require('../models/schoolDetail');
@@ -68,8 +69,6 @@ module.exports = {
     const newClass = Class(req.body);
     newClass._id = mongoose.Types.ObjectId();
     newClass.grades = GradesDemo();
-
-    // save to db
     const classRoom = await newClass.save();
 
     // update teacher information
@@ -81,6 +80,17 @@ module.exports = {
       teacher.classes[count] = classRoom;
       await Teacher.findByIdAndUpdate({_id: teacher._id}, teacher);
     }
+
+    // create rating that reference to class by id
+    const rating = Rating();
+    rating.topicId = classRoom._id;
+    rating.status = "classroom";
+    rating.userIds = [{
+      "userId": classRoom.teachBy,
+      "star": 3
+    }];
+
+    await rating.save();
 
     res.send(classRoom);
   },
