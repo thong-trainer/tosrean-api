@@ -89,7 +89,6 @@ module.exports = {
       "userId": classRoom.teachBy,
       "star": 3
     }];
-
     await rating.save();
 
     res.send(classRoom);

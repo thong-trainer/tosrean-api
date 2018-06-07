@@ -69,7 +69,8 @@ module.exports = {
   insert: async (req, res, next) => {
 
     console.log(">> INSERTING...");
-    const rating = await Rating.findOne({topicId: req.body.topicId, status: req.body.status});
+    // const rating = await Rating.findOne({topicId: req.body.topicId, status: req.body.status});
+    const rating = await Rating.findById(req.body._id);
 
     rating.userIds.push({ userId: req.body.userId, star: req.body.selectedStar });
     const result = await rating.save();
@@ -80,7 +81,8 @@ module.exports = {
   update: async (req, res, next) => {
 
     console.log(">> UPDATING...");
-    const rating = await Rating.findOne({topicId: req.body.topicId, status: req.body.status});
+    // const rating = await Rating.findOne({topicId: req.body.topicId, status: req.body.status});
+    const rating = await Rating.findById(req.body._id);
 
     var index = rating.userIds.findIndex(x => x.userId == req.body.userId);
     rating.userIds[index].star = req.body.selectedStar;

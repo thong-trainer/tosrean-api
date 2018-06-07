@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Group = require('../models/group');
 
 module.exports = {
-  // get groups by department id
+  // get groups by class id
   index: async (req, res, next) => {
      const groups = await Group.find({classId: req.params.classId, active: true});
     res.send(groups);

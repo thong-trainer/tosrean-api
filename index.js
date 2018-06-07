@@ -66,6 +66,7 @@ app.use('/api/v1/class', require('./routes/api/class'));
 app.use('/api/v1/group', require('./routes/api/group'));
 app.use('/api/v1/comment', require('./routes/api/comment'));
 app.use('/api/v1/rating', require('./routes/api/rating'));
+app.use('/api/v1/exam', require('./routes/api/exam'));
 
 
 app.get('/', (req, res) => res.render('index'));

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-UserSchema = require('./user').schema,
 Schema = mongoose.Schema;
 
 // create Group Schema & Model
